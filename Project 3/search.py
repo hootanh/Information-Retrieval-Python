@@ -10,7 +10,7 @@ import math
 from collections import defaultdict
 from tkinter import messagebox
 from tkinter import *
-import pickle
+import fickling
 
 def html_reader():
     
@@ -32,7 +32,7 @@ def html_reader():
 
 def search_dict(q):
     with open('/users/hootan/downloads/inverted_index.pickle', 'rb') as f:
-        inverted_index_dict = pickle.load(f)
+        inverted_index_dict = fickling.load(f)
         f.close()
     try:
         q = q.lower().split()

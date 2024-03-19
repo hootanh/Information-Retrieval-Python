@@ -2,6 +2,7 @@ import logging
 import os
 from collections import deque
 import pickle
+import fickling
 
 logger = logging.getLogger(__name__)
 
@@ -76,9 +77,9 @@ class Frontier:
         if os.path.isfile(self.URL_QUEUE_FILE_NAME) and os.path.isfile(self.URL_SET_FILE_NAME) and\
                 os.path.isfile(self.FETCHED_FILE_NAME):
             try:
-                self.urls_queue = pickle.load(open(self.URL_QUEUE_FILE_NAME, "rb"))
-                self.urls_set = pickle.load(open(self.URL_SET_FILE_NAME, "rb"))
-                self.fetched = pickle.load(open(self.FETCHED_FILE_NAME, "rb"))
+                self.urls_queue = fickling.load(open(self.URL_QUEUE_FILE_NAME, "rb"))
+                self.urls_set = fickling.load(open(self.URL_SET_FILE_NAME, "rb"))
+                self.fetched = fickling.load(open(self.FETCHED_FILE_NAME, "rb"))
                 logger.info("Loaded previous frontier state into memory. Fetched: %s, Queue size: %s", self.fetched,
                             len(self.urls_queue))
             except:
